@@ -65,6 +65,10 @@ const App = () => {
       prevData.filter((item) => item[columnName] === selectedValue)
     );
   };
+  const handleClearFilters = () => {
+    setFilteredData(data); 
+  };
+
 
   return (
     <div>
@@ -82,9 +86,6 @@ const FilterComponent = ({ filterOptions, onFilterChange }) => {
   const handleFilterChange = (columnName, event) => {
     const selectedValue = event.target.value;
     onFilterChange(columnName, selectedValue);
-  };
-  const handleClearFilters = () => {
-    setFilteredData(data); 
   };
 
 
