@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import DataTable from 'react-data-table-component';
 import Papa from 'papaparse';
 import Data from './dataset_small.csv';
+import './style.css' ;
 
 const App = () => {
   const [data, setData] = useState([]);
@@ -69,6 +70,9 @@ const App = () => {
     <div>
       <h1>Filter for small dataset</h1>
       <FilterComponent filterOptions={filterOptions} onFilterChange={handleFilterChange} />
+      <button className="clear-button" onClick={handleClearFilters}>
+          Clear Filters
+        </button>
       <TableComponent columns={columns} data={filteredData} />
     </div>
   );
@@ -79,6 +83,10 @@ const FilterComponent = ({ filterOptions, onFilterChange }) => {
     const selectedValue = event.target.value;
     onFilterChange(columnName, selectedValue);
   };
+  const handleClearFilters = () => {
+    setFilteredData(data); 
+  };
+
 
   return (
     <div>
